@@ -31,16 +31,20 @@ cat.makeSounds()
 
 // //? When we write repeated code, then we use Parameter properties.
 // //* This code is more clean and organized.
-// class Animal {
-//     constructor(public name: string, public species: string, public sounds: string) { }
+/**
+class Animal {
+    constructor(public name: string, public species: string, public sounds: string) { }
     
-//     makeSounds() {
-//         console.log(`The ${this.name} says ${this.sounds}`)
-//     }
-// }
+    makeSounds() {
+        console.log(`The ${this.name} says ${this.sounds}`)
+    }
+}
 
-// const dog = new Animal("German Shepard", "dog", "ghew ghew");
-// const cat = new Animal("Persian", "cat", "mew mew");
+const dog = new Animal("German Shepard", "dog", "ghew ghew");
+const cat = new Animal("Persian", "cat", "mew mew");
 
-// dog.makeSounds();
-// cat.makeSounds()
+dog.makeSounds();
+cat.makeSounds()
+
+*/
+

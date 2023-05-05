@@ -43,6 +43,7 @@
 
 //* We can make a class when we write common properties in many class. That's called inheritance
 
+/**
 class Person {
      name: string
     age: number
@@ -85,3 +86,5 @@ class Teacher extends Person{
 
 const teacher1 = new Teacher("Mr. Y", 64, "USA", "Professor")
 console.log(teacher1)
+
+*/
