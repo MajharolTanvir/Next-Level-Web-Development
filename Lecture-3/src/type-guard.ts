@@ -99,29 +99,29 @@ class Cat extends Animal {
 
 // Example 2 (Type Narrowing)
 
-function isDog(animal: Animal):animal is Dog {
-    return animal instanceof Dog
-}
-function isCat(animal: Animal):animal is Cat {
-    return animal instanceof Cat
-}
+// function isDog(animal: Animal):animal is Dog {
+//     return animal instanceof Dog
+// }
+// function isCat(animal: Animal):animal is Cat {
+//     return animal instanceof Cat
+// }
 
-function getAnimal(animal: Animal) {
-    if (isDog(animal)) { 
-        animal.makeBark()
-    } else if (isCat(animal)) {
-        animal.makeMew()
-    }
-    else (
-        animal.makeSound()
-    )
-}
+// function getAnimal(animal: Animal) {
+//     if (isDog(animal)) { 
+//         animal.makeBark()
+//     } else if (isCat(animal)) {
+//         animal.makeMew()
+//     }
+//     else (
+//         animal.makeSound()
+//     )
+// }
 
-const animal1 = new Dog("German bhai", "dog") // instance => Dog
-const animal2 = new Cat("Persian bhai", "cat") // instance => Cat
+// const animal1 = new Dog("German bhai", "dog") // instance => Dog
+// const animal2 = new Cat("Persian bhai", "cat") // instance => Cat
 
-getAnimal(animal1)
-getAnimal(animal2)
+// getAnimal(animal1)
+// getAnimal(animal2)
 
 
 
