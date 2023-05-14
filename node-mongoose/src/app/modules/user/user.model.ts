@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose"
 import { IUser } from "./user.interface"
 
 // * Step 2: Create a Schema using interface
-    const userSchema = new Schema < IUser > ({
+const userSchema = new Schema < IUser > ({
         id: {
             type: String,
             required: true, 
@@ -22,8 +22,10 @@ import { IUser } from "./user.interface"
         emergencyContactNo: { type: String, required: true },
         presentAddress: { type: String, required: true },
         permanentAddress: { type: String, required: true }
-    })
+})
 
 
-    // * Step 3: Create a Model using interface and Schema
-    const User = model<IUser>("User", userSchema)
+// * Step 3: Create a Model using interface and Schema
+const User = model<IUser>("User", userSchema)
+
+export default User
