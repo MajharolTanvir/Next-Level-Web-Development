@@ -15,57 +15,18 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req: Request, res: Response, next: NextFunction) => {
     // Inserting a test data into the mongoDB
     /**
-     * ? Step 1: interface
-     * ? Step 2: Schema
-     * ? Step 3: Model
-     * ? Step 4: Database query
+     * ! Breakdown the all steps as individual file.
+     * ? Step 1: interface -> user.interface.ts
+     * ? Step 2: Schema -> user.model.ts
+     * ? Step 3: Model -> user.model.ts
+     * ? Step 4: Database query -> service
+     * 
+     * * Route -> 
+     * * route functions -> controller.ts
      */
 
-    // * Step 1: Create an interface
-    interface IUser {
-        id: string;
-        role: string;
-        password: string;
-        name: {
-            firstName: string;
-            middleName?: string;
-            lastName: string;
-        };
-        dateOfBirth?: string;
-        gender: "male" | "female";
-        email: string;
-        contactNo: string;
-        emergencyContactNo: string;
-        presentAddress: string;
-        permanentAddress: string;
-    }
 
-    // * Step 2: Create a Schema using interface
-    const userSchema = new Schema < IUser > ({
-        id: {
-            type: String,
-            required: true, 
-            unique: true
-        },
-        role: { type: String, required: true },
-        password: { type: String, required: true },
-        name: {
-            firstName: { type: String, required: true },
-            middleName: { type: String },
-            lastName: { type: String, required: true }
-        },
-        dateOfBirth: { type: Date },
-        gender: { type: String, enum: ["male", "female"] },
-        email: { type: String, required: true },
-        contactNo: { type: String, required: true },
-        emergencyContactNo: { type: String, required: true },
-        presentAddress: { type: String, required: true },
-        permanentAddress: { type: String, required: true }
-    })
-
-
-    // * Step 3: Create a Model using interface and Schema
-    const User = model<IUser>("User", userSchema)
+    
 
     // * Step 4: Make an instance and query on database
 
