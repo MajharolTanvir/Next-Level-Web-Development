@@ -1,6 +1,6 @@
 import express, { Application, NextFunction, Request, Response, } from "express";
 import cors from "cors";
-import { Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 
 const app: Application = express()
 // Using cors
@@ -41,7 +41,7 @@ app.get('/', (req: Request, res: Response, next: NextFunction) => {
     }
 
     // * Step 2: Create a Schema using interface
-    const schema = new Schema < IUser > ({
+    const userSchema = new Schema < IUser > ({
         id: {
             type: String,
             required: true, 
@@ -62,6 +62,36 @@ app.get('/', (req: Request, res: Response, next: NextFunction) => {
         presentAddress: { type: String, required: true },
         permanentAddress: { type: String, required: true }
     })
+
+
+    // * Step 3: Create a Model using interface and Schema
+    const User = model<IUser>("User", userSchema)
+
+    // * Step 4: Make an instance and query on database
+
+// we need an async function. because we use async on the server.ts file.
+const createUserToDB = async () => {
+    const user = new User({
+        id: "744",
+        role: "Student",
+        password: "password",
+        name: {
+            firstName: "Majharul",
+            middleName: "islam",
+            lastName: "Khan",
+        },
+        gender: "male",
+        email: "abs@gmail.com",
+        contactNo: "023233423423",
+        emergencyContactNo: "123123123123",
+        presentAddress: "America",
+        permanentAddress: "London"
+    })
+    await user.save();
+    console.log(user)
+    }
+    createUserToDB()
+
 //   res.send('Hello World!')
 })
 
