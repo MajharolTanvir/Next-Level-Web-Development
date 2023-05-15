@@ -1,8 +1,9 @@
 import { Schema, model } from "mongoose"
-import { IUser } from "./user.interface"
+import { IUser, IUserMethods, UserModel } from "./user.interface"
+
 
 // * Step 2: Create a Schema using interface
-const userSchema = new Schema < IUser > ({
+const userSchema = new Schema < IUser, UserModel, IUserMethods > ({
         id: {
             type: String,
             required: true, 
@@ -24,8 +25,17 @@ const userSchema = new Schema < IUser > ({
         permanentAddress: { type: String, required: true }
 })
 
+userSchema.static('getAdminUsers', async function getAdminUsers() {
+    const admins = await this.find({ role: "admin" });
+    return admins
+});
+
+userSchema.method('getAdminUsers', async function getAdminUsers() {
+    return this.name.firstName + " " + this.name.lastName
+})
+
 
 // * Step 3: Create a Model using interface and Schema
-const User = model<IUser>("User", userSchema)
+const User = model<IUser, UserModel>("User", userSchema)
 
 export default User
